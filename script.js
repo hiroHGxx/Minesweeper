@@ -94,7 +94,11 @@ function renderBoard() {
             cell.dataset.col = j;
             
             if (board[i][j].isRevealed) {
-                cell.classList.add('revealed');
+                // アニメーションを確実に再生するために、一度クラスを外して再適用
+                setTimeout(() => {
+                    cell.classList.add('revealed');
+                }, 0);
+                
                 if (board[i][j].isMine) {
                     cell.classList.add('mine');
                     cell.textContent = '💣';
